@@ -262,11 +262,9 @@ const swipeBotSpeedValueUpgrade = (bearer) =>
     const readFileToJSON = (path) => {
         return JSON.parse(fs.readFileSync(path, "utf8"));
       };
-      let getUserId;
 (async () => {
     const queryList = readFileToJSON("./yescoin.json");
     const twisters = new Twisters();
-    let getUserInfo;
     
     while (true) {
         await Promise.all(
@@ -279,8 +277,8 @@ const swipeBotSpeedValueUpgrade = (bearer) =>
 
                 if(getToken.data.token){
                     const tapCoin = await TapCoin(getToken.data.token, totalTap)
-                    getUserInfo = await GetUserInfo(getToken.data.token)
-                    getUserId = getUserInfo.data.userId
+                    var getUserInfo = await GetUserInfo(getToken.data.token)
+                    var getUserId = getUserInfo.data.userId
                       const getAccountBuildInfo = await GetAccountBuildInfo(getToken.data.token)
                       // console.log(getUserInfo)
                     if(getUserInfo.message == 'Success'){
